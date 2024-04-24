@@ -1,0 +1,18 @@
+#lang racket
+
+;; Funkcja pomocnicza sprawdzająca, czy liczba jest pierwsza
+(define (prime? n)
+  (define (iter d)
+    (cond ((> (* d d) n) #t)             ; Jeżeli d^2 > n, to n jest pierwsze
+          ((zero? (modulo n d)) #f)      ; Jeżeli n dzieli się przez d, to n nie jest pierwsze
+          (else (iter (+ d 1)))))        ; W przeciwnym razie sprawdzamy kolejną liczbę
+  (if (< n 2) #f (iter 2)))              ; Liczby mniejsze niż 2 nie są pierwsze
+
+;; Generowanie strumienia wszystkich liczb pierwszych
+(define (prime-stream)
+  (define (helper n)
+    (if (prime? n)                      ; Jeżeli n jest pierwsze
+        (stream-cons n (helper (+ n 1))) ; Dodajemy n do strumienia i rekurencyjnie generujemy kolejne liczby
+        (helper (+ n 1))))              ; W przeciwnym razie generujemy kolejne liczby bez dodawania n
+
+(helper 2))  

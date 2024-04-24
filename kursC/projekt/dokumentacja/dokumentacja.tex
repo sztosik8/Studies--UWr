@@ -1,0 +1,84 @@
+% Kartka rozmiaru a4, pozioma, dwie kolumny
+\documentclass[a4paper,onecolumn, oneside]{article}
+
+% większy odstęp między kolumnami
+\setlength{\columnsep}{3cm}
+
+% UTF-8
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Czcionka, która sensownie wygląda na monitorze.
+\usepackage{lmodern}
+
+% Przyjazne makra związane z tytułem używanie nazwy autora (\theauthor).
+\usepackage{titling}
+\setlength{\droptitle}{-2cm}
+
+% Język
+\usepackage[polish]{babel}
+% \usepackage[english]{babel}
+
+% Rózne przydatne paczki:
+% - znaczki matematyczne
+\usepackage{amsmath, amsfonts}
+% - wcięcie na początku pierwszego akapitu
+\usepackage{indentfirst}
+% - komenda \url 
+\usepackage{hyperref}
+% - dołączanie obrazków
+\usepackage{graphics}
+% - szersza strona
+\usepackage[nofoot,hdivide={2cm,*,2cm},vdivide={2cm,*,2cm}]{geometry}
+
+% dane autora
+\author{Katarzyna Trzos}
+
+% Tego nie ruszaj
+\title{Dokumentacja projektu C}
+\date{ \today}
+
+% początek dokumentu
+\begin{document}
+\maketitle
+
+\section{Wstęp z uzasadnieniem programu i opisem podstawowych celów}
+
+Program otwiera folder ze zdjęciami i tworzy w nim kolejny folder o nazwie "output" w którym znajduje sie plik "hash.txt" z policzonymi hashami w systemie binarnym i w systemie dziesiętnym oraz nazwa pliku(zdjęcia).
+
+\section{ Opis zastosowania programu i sposób użycia czyli dokładne wypunktowanie możliwości programu, znaczenie
+argumentów wywołania, klawiszy, etc.}
+Podawanie ścieżki do folderu ze zdjęciami, zatwierdzenie ENTER
+Wybór oczekiwanego wyjścia (zdjęcia podobne/ duplikaty) strzałki prawo <, lewo >, zatwierdzenie ENTER
+ 
+
+
+
+\section{Opis implementacji w tym krótki opis zawartości modułów, opis fragmentów kodu z referencją na źródła
+jeśli zostały zaczerpnięte z przykładów lub napisane na ich bazie. Można używać przenośnych zewnętrznych
+bibliotek, które powinny być uzgodnione przy ustalaniu tematu projektu i zawarte także we wstępnym
+opisie.}
+
+1. Redukcja rozmiaru. \\
+2. Przekonwertowanie na skalę szarości.\\
+3. Funkcja hashująca. \\
+
+\section{Wymagania i sposób kompilacji np. skrypt/Makefile/projekt CodeBlocks wymagane wersje zewnętrznych
+bibliotek, na jakich systemach powinno działać np. Microsoft/Linux/Mac, na jakich systemach został
+program przetestowany: dokładnie w jakiej konfiguracji.}
+
+Program pisany w systemie Linux
+
+Biblioteki zewnętrzne: \\
+OpenCV https://opencv.org/ \\
+Leptonica http://www.leptonica.org/ \\
+GTK https://www.gtk.org/ \\
+
+
+\section{ Referencje do bibliotek i innych źródeł użytych w trakcie pisania projektu.} 
+biblioteki stb_image\\
+GTK https://www.gtk.org/ \\
+
+
+\end{document}
+

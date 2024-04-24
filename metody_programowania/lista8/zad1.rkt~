@@ -1,0 +1,11 @@
+#lang plait
+
+(define (cycle! xs)
+  ( define (it fir res curr)
+     (codn [(null? res) (cons curr fir)]
+           [else () ])))
+
+  (define (list->mlist xs)
+  (if (null? xs)
+      null
+      (mcons (car xs) (list->mlist (cdr xs)))))

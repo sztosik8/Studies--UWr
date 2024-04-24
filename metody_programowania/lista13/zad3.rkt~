@@ -1,0 +1,38 @@
+#lang racket
+
+;; delay and force
+
+(define-syntax-rule
+  (stream-cons v s)
+  (cons v (delay s)))
+
+(define stream-car car)
+
+(define (stream-cdr s)
+  (force (cdr s)))
+
+(define stream-null null)
+(define stream-null? null?)
+
+(define ones (stream-cons 1 ones)) ; Strumień zawierający same jedynki
+
+(define (map2 f xs ys)
+  (stream-cons
+   (f (stream-car xs)
+      (stream-car ys))
+   (map2 f (stream-cdr xs) (stream-cdr ys))))
+
+(define nats (stream-from 1)) ; Strumień zawierający liczby naturalne
+
+(define factorial-stream
+  (let ((factorial-helper
+         (lambda (n)
+           (if (= n 0)
+               (stream-cons 1 (map2 * factorial-stream ones))
+               (map2 * (stream-range 1 (+ n 1)) factorial-stream)))))
+    (factorial-helper 0)))
+ 
+
+(define factorials (stream-cdr factorial-stream))
+
+(stream-take factorials 10) ; Pobierz pierwsze 10 wartości silni

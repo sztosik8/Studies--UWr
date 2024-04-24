@@ -1,0 +1,11 @@
+#lang plait
+
+(define (sorted? xs)
+  (define (it min xs)
+    (if (empty? xs) #t
+        (and (<= min (car xs)) (it (car xs) (cdr xs)))))
+  (it -inf.0 xs)) 
+
+(define xs '(1 2 3 4 5 9 7 8))
+(sorted? xs)
+

@@ -1,0 +1,7 @@
+#lang plait
+
+( define-type ( Formula 'v )
+( var [ var : 'v ])
+( neg [ f : ( Formula 'v ) ])
+( conj [ l : ( Formula 'v ) ] [ r : ( Formula 'v ) ])
+( disj [ l : ( Formula 'v ) ] [ r : ( Formula 'v ) ]) )

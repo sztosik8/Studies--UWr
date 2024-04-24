@@ -1,0 +1,1 @@
+gcc -std=c17 -Wall main1.c operacje1.c operacje1.h -lm   

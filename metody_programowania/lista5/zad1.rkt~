@@ -1,0 +1,5 @@
+#lang plait 
+
+(define (f1 x y)
+  (+ x (- x y)))
+

@@ -1,0 +1,189 @@
+20 -10 0 -10 2 -7 -1 -5 2 -5 -1 -3 5 -3 1 -3 -4 -1 4 -1 1 1 -2 2 3 3 -1 5 -4 6 1 7 3 8 7 9 6 10 1 6 2
+
+
+pointy dla prostej X =  -4  i odleglosci d 4.30278z przedzialu (0.302776,-8.30278)
+-3  -4
+-7  -1
+-5  -1
+-3  1
+-1  1
+-5  2
+-1  4
+-3  5
+porownuje indeksy i j k : 0 1 2
+porownuje indeksy i j k : 0 1 3
+zmiana indeksow i : 0 1 3
+porownuje indeksy i j k : 0 2 3
+zmiana indeksow i : 0 2 3
+porownuje indeksy i j k : 0 3 4
+zmiana indeksow i : 0 3 4
+porownuje indeksy i j k : 0 4 5
+zmiana indeksow i : 0 4 5
+porownuje indeksy i j k : 0 5 6
+zmiana indeksow i : 0 5 6
+porownuje indeksy i j k : 0 6 7
+zmiana indeksow i : 0 6 7
+porownuje indeksy i j k : 1 2 3
+porownuje indeksy i j k : 1 2 4
+porownuje indeksy i j k : 1 2 5
+porownuje indeksy i j k : 1 2 6
+zmiana indeksow i : 1 2 6
+porownuje indeksy i j k : 1 3 4
+porownuje indeksy i j k : 1 3 5
+porownuje indeksy i j k : 1 3 6
+zmiana indeksow i : 1 3 6
+porownuje indeksy i j k : 1 4 5
+porownuje indeksy i j k : 1 4 6
+zmiana indeksow i : 1 4 6
+porownuje indeksy i j k : 1 5 6
+zmiana indeksow i : 1 5 6
+porownuje indeksy i j k : 1 6 7
+zmiana indeksow i : 1 6 7
+porownuje indeksy i j k : 2 3 4
+porownuje indeksy i j k : 2 3 5
+porownuje indeksy i j k : 2 3 6
+zmiana indeksow i : 2 3 6
+porownuje indeksy i j k : 2 4 5
+porownuje indeksy i j k : 2 4 6
+zmiana indeksow i : 2 4 6
+porownuje indeksy i j k : 2 5 6
+zmiana indeksow i : 2 5 6
+porownuje indeksy i j k : 2 6 7
+zmiana indeksow i : 2 6 7
+porownuje indeksy i j k : 3 4 5
+porownuje indeksy i j k : 3 4 6
+porownuje indeksy i j k : 3 4 7
+porownuje indeksy i j k : 3 5 6
+porownuje indeksy i j k : 3 5 7
+porownuje indeksy i j k : 3 6 7
+porownuje indeksy i j k : 4 5 6
+porownuje indeksy i j k : 4 5 7
+porownuje indeksy i j k : 4 6 7
+porownuje indeksy i j k : 5 6 7
+
+
+pointy dla prostej X =  6  i odleglosci d 4.03225z przedzialu (10.0322,1.96775)
+5  -4
+3  -1
+6  1
+10  1
+6  2
+2  3
+7  3
+9  6
+8  7
+porownuje indeksy i j k : 0 1 2
+zmiana indeksow i : 0 1 2
+porownuje indeksy i j k : 0 2 3
+zmiana indeksow i : 0 2 3
+porownuje indeksy i j k : 0 3 4
+zmiana indeksow i : 0 3 4
+porownuje indeksy i j k : 0 4 5
+zmiana indeksow i : 0 4 5
+porownuje indeksy i j k : 0 5 6
+zmiana indeksow i : 0 5 6
+porownuje indeksy i j k : 0 6 7
+zmiana indeksow i : 0 6 7
+porownuje indeksy i j k : 0 7 8
+zmiana indeksow i : 0 7 8
+porownuje indeksy i j k : 1 2 3
+porownuje indeksy i j k : 1 2 4
+porownuje indeksy i j k : 1 2 5
+porownuje indeksy i j k : 1 2 6
+porownuje indeksy i j k : 1 2 7
+zmiana indeksow i : 1 2 7
+porownuje indeksy i j k : 1 3 4
+porownuje indeksy i j k : 1 3 5
+porownuje indeksy i j k : 1 3 6
+porownuje indeksy i j k : 1 3 7
+zmiana indeksow i : 1 3 7
+porownuje indeksy i j k : 1 4 5
+porownuje indeksy i j k : 1 4 6
+porownuje indeksy i j k : 1 4 7
+zmiana indeksow i : 1 4 7
+porownuje indeksy i j k : 1 5 6
+porownuje indeksy i j k : 1 5 7
+zmiana indeksow i : 1 5 7
+porownuje indeksy i j k : 1 6 7
+zmiana indeksow i : 1 6 7
+porownuje indeksy i j k : 1 7 8
+zmiana indeksow i : 1 7 8
+porownuje indeksy i j k : 2 3 4
+porownuje indeksy i j k : 2 3 5
+porownuje indeksy i j k : 2 3 6
+porownuje indeksy i j k : 2 3 7
+zmiana indeksow i : 2 3 7
+porownuje indeksy i j k : 2 4 5
+porownuje indeksy i j k : 2 4 6
+porownuje indeksy i j k : 2 4 7
+zmiana indeksow i : 2 4 7
+porownuje indeksy i j k : 2 5 6
+porownuje indeksy i j k : 2 5 7
+zmiana indeksow i : 2 5 7
+porownuje indeksy i j k : 2 6 7
+zmiana indeksow i : 2 6 7
+porownuje indeksy i j k : 2 7 8
+zmiana indeksow i : 2 7 8
+porownuje indeksy i j k : 3 4 5
+porownuje indeksy i j k : 3 4 6
+porownuje indeksy i j k : 3 4 7
+zmiana indeksow i : 3 4 7
+porownuje indeksy i j k : 3 5 6
+porownuje indeksy i j k : 3 5 7
+zmiana indeksow i : 3 5 7
+porownuje indeksy i j k : 3 6 7
+zmiana indeksow i : 3 6 7
+porownuje indeksy i j k : 3 7 8
+zmiana indeksow i : 3 7 8
+porownuje indeksy i j k : 4 5 6
+porownuje indeksy i j k : 4 5 7
+porownuje indeksy i j k : 4 5 8
+zmiana indeksow i : 4 5 8
+porownuje indeksy i j k : 4 6 7
+porownuje indeksy i j k : 4 6 8
+zmiana indeksow i : 4 6 8
+porownuje indeksy i j k : 4 7 8
+zmiana indeksow i : 4 7 8
+porownuje indeksy i j k : 5 6 7
+porownuje indeksy i j k : 5 6 8
+porownuje indeksy i j k : 5 7 8
+porownuje indeksy i j k : 6 7 8
+
+
+pointy dla prostej X =  0  i odleglosci d 2.32514z przedzialu (2.32514,-2.32514)
+1  -2
+-1  1
+2  3
+-1  4
+porownuje indeksy i j k : 1 2 3
+zmiana indeksow i : 1 2 3
+
+
+obwod min = 4.65028
+ punkty
+6 1
+6 2
+7 3
+
+-----------------testy
+
+4 0 0 0 1 1 0 1 1  ---> odp (0,0), (0,1), (1,1)
+
+5 0 0 0 3 1 1 2 2 3 3  ---> odp (0,0), (1,1), (2,2)
+
+5 1 -1 0 1 0 3 2 2 -1 -1  ---> odp (-1,-1), (0,1), (1,-1)
+
+// 6 5 6 6 1 3 4 1 -2 4 3 3 3  ---> odp (3,3), (3,4), (4,3)
+// 5 3 2 3 3 4 3 3 4 2 3   ---> odp (2, 3), (3, 2), (3, 3)
+// 6 -5 4 -2 2 -1 3 1 3 3 1 5 4
+// 12 -7 2 -5 4 -4 -2 -3 -1 -2 2 -1 3 1 3 3 1 5 4 6 3 7 4 10 3  ---> odp (6, 3), (5, 4), (7, 4)
+// 13 -7 2 -6 3 -6 2 -4 -2 -3 -1 -2 2 -1 3 1 3 3 1 5 4 6 3 7 4 10 3  ---> odp (-7, 2), (-6, 2) (-6, 3)
+
+// 8 -2 3 -1 2 -1 -2 0  1 1 0 1 1 2 2 2 -2   ---> odp (1,0), (1,1), (2,2)
+// 20 -10 0 -10 2 -7 -1 -5 2 -5 -1 -3 5 -3 1 -3 -4 -1 4 -1 1 1 -2 2 3 3 -1 5 -4 6 1 7 3 8 7 9 6 10 1 10 -2 ---> odp (-3, 1), (-1, 1), (-5, 2)
+// 21 -10 0 -10 2 -7 -1 -5 2 -5 -1 -3 5 -3 1 -3 -4 -1 4 -1 1 1 -2 2 3 3 -1 5 -4 6 1 7 3 8 7 9 6 10 1 10 -2 0 2  ---> odp (-3, 1), (-1, 1), (0, 2)
+
+ 14 -30 2 -22 2 -12 2 -4 2 -3 2 -1 2 2 2 3 2 6 2 13 2 20 2 400 2 300 2 200 2 --> (-4. 2), (-3, 2), (-1, 2)
+ 14 2 -22 2 -12 2 -4 2 -3 2 -1 2 2 2 3 2 6 2 13 2 20 2 400 2 300 2 200 2 40  -- > (2, -4), (2, -3), (2, -1)
+
+

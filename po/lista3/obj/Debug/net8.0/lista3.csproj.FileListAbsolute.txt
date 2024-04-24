@@ -1,0 +1,4 @@
+/Users/sztosik/Documents/studia/po/lista3/obj/Debug/net8.0/lista3.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sztosik/Documents/studia/po/lista3/obj/Debug/net8.0/lista3.AssemblyInfoInputs.cache
+/Users/sztosik/Documents/studia/po/lista3/obj/Debug/net8.0/lista3.AssemblyInfo.cs
+/Users/sztosik/Documents/studia/po/lista3/obj/Debug/net8.0/lista3.csproj.CoreCompileInputs.cache

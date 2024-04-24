@@ -1,0 +1,1 @@
+void ha_value(unsigned char *img, int width, int height, int channels);

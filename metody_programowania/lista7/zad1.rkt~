@@ -1,0 +1,65 @@
+#lang plait
+
+(define-type (Queue 'a)
+  (empty-queue)
+  (queue (h : 'a) (f : (Listof 'a)) (r : (Listof 'a))))
+
+
+(define-type (tree-2-3 'a)
+  (leaf)
+  (2-node [elem : 'a] [l : (tree-2-3 'a)] [r : (tree-2-3 'a)])
+  (3-node [elem1 : 'a] [elem2 : 'a] [l : (tree-2-3 'a)][m : (tree-2-3 'a)] [r : (tree-2-3 'a)]))
+
+
+(define (height t)
+  (type-case (tree-2-3 'a) t
+    [(leaf) 0]
+    [(2-node elem l r)
+     (let [(hl (height l ))
+           (hr (height r ))]
+       (if (and (= hl hr) (not (= hl -1)))
+           (+ 1 hl)
+           -1))] 
+    [(3-node elem1 elem2 l m r)
+     (let [(hl (height l ))
+           (hm (height m ))
+           (hr (height r ))]
+       (if (and (= hl hr) (= hm hl) (not (= hl -1)))
+           (+ 1 hl) 
+           -1))]))
+
+(define (placement t)
+  (local [(define (it max min t) 
+            (type-case (tree-2-3 'a) t
+              [(leaf) #t]
+              [(2-node elem l r)
+               (and (< min elem) (< elem max) (it elem min l) (it max elem l))]
+              [(3-node elem1 elem2 l m r)
+               (and (> elem1 elem2) (< elem1 max) (> elem2 min) (it max elem1 r) (it elem2 min l) (it elem1 elem2 m))]))]
+    (it -inf.0 +inf.0 t)))
+
+#|(define (is-2-3-tree? t)
+  (local [(define (val-check min max t)
+            (type-case (2-3-tree 'a) t
+              [(leaf) #t]
+              [(2-node l elem r)
+               (and (< min elem) (< elem max) (val-check min elem l) (val-check elem max r))]
+              [(3-node l a mid b r)
+               (and (< b a) (< min b) (< a max) (val-check min b l) (val-check b a mid) (val-check a max r))]))
+ |# 
+
+         (define (2-3tree? t)
+           (and (not(= -1 (height t))) (placement t)))
+
+
+(define example-tree1
+  (3-node
+   6
+   3
+   (2-node 2 (leaf) (leaf))
+   (2-node 5 (leaf)  (leaf))
+   (3-node 9 8 (leaf)
+           (2-node 2 (leaf) (leaf))
+           (leaf))))
+
+(2-3tree? example-tree1)

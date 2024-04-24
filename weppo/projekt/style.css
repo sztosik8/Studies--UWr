@@ -1,0 +1,125 @@
+/* style.css */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --orange: #c4bd0a;
+    --winning-blocks: #1e4b61;
+}
+
+body {
+    color: var(--orange);
+    font-family: 'Marker Felt', fantasy;
+}
+
+h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 54px;
+    text-transform: uppercase;
+    margin-top: 0px;
+}
+
+.container {
+    padding: 40px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #11719d;
+}
+
+
+#gameboard {
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px; /* Adjust margin as needed */
+    margin-bottom: 20px;
+}
+
+.box {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange);
+    font-size: 120px;
+    border-right: 2px solid;
+    border-bottom: 2px solid;
+}
+
+.box:nth-child(3n) {
+    border-right: none;
+}
+
+.box:nth-child(6)~.box {
+    border-bottom: none;
+}
+
+#restartBtn{
+    margin-left: 10px; /* Add margin to separate from the game board */
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: var(--orange);
+    color: rgb(33, 60, 68);
+    border-color: var(--orange);
+    align-items: center;
+    font-size: 18px;
+    transition: 200ms transform;
+    font-weight: 600;
+    border-bottom: 2px solid;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
+input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+
+#enterName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 100px;
+}
+
+#name {
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+#playerInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px; /* Adjust margin as needed */
+}
+
+#find {
+    margin-bottom: 20px;
+}
+
+
+#userCont,
+#oppNameCont {
+    margin-right: 20px;
+}
