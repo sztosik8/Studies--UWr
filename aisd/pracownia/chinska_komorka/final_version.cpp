@@ -3,14 +3,13 @@ Katarzyna Trzos
 Alorytmy i struktury danych
 Pracownia D
 Liczby
-wersja uzywajaca dwoch tablic
 */
 #include <iostream>
 using namespace std;
-int lit[10002];
-int post[10002];
-int opt_ind[101][10002];
-long long dp_val[101][10002];
+int lit[10003];
+int post[10003];
+int opt_ind[102][10003]; // opt_ind[i][j] tablica trzymajaca ile pozycji wczensiej stoi optymalna palka i-1, dla palki i w j-tym miejscy
+long long dp_val[103][10002];
 
 int set_first_cost(int l)
 {
@@ -34,9 +33,9 @@ int find_opt_ind_array(int ind, int rozm_tab)
 
     long long new_val_opt;
     int jak_daleko = 1;
-    int k = opt_ind[ind - rozm_tab][ind - 1] + 1;
+    // int k = opt_ind[ind - rozm_tab][ind - 1] + 1;
 
-    for (int i = 2; i <= k; i++)
+    for (int i = 2; i <= rozm_tab; i++)
     {
         co_odejmuje += post[ind];
         new_val_opt = dp_val[ind - rozm_tab - 1][ind - i] - co_odejmuje;
@@ -106,7 +105,6 @@ int main()
                 ans = dp_val[k - 1][r];
             }
         }
-
         cout << ans << '\n';
         dp_val[k][0] = l - min_val_ind + 1;
         l -= dp_val[k][0];
@@ -124,5 +122,32 @@ int main()
             cout << dp_val[k][i] << ' ';
         }
     }
-    cout << '\n';
 }
+
+/* TESTY
+1 6 1 1 1 1 1 1    ----> 21   6
+2 6 1 1 1 1 1 1    ----> 12    3 3
+3 6 1 1 1 1 1 1    ----> 9     2 2 2
+4 6 1 1 1 1 1 1    ----> 8     1 1 2 2
+5 6 1 1 1 1 1 1    ----> 7     1 1 1 1 2
+6 6 1 1 1 1 1 1    ----> 6     1 1 1 1 1 1
+3 6 3 4 3 1 1 4    ----> 23    2 3 1
+2 4 3 1 1 1        ----> 8     2 2
+5 6 2 2 2 2 2 2    ----> 14    1 1 1 1 2
+4 10 3 1 2 5 4 2 1 3 6 7  -> 56  3 4 2 1
+5 10 3 1 2 5 4 2 1 3 6 7  -> 49 3 1 3 2 1
+3 7 1 1 1 1 1 1 1023     --> 1035  3 3 1
+
+3 400
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+--> 26867 133 133 134
+*/

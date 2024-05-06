@@ -1,3 +1,9 @@
+/*
+Katarzyna Trzos
+Alorytmy i struktury danych
+Pracownia A
+Geneaologia
+*/
 #include <iostream>
 #include <vector>
 #include <stack>
@@ -39,15 +45,9 @@ void dfs_it(int v)
         {
             pre[u] = ++t;
 
-            /*cout << '\n'
-                 << "beg - " << ind[u].first << "  end - " << ind[u].second << '\n';
-            cout << '\n'
-                 << u << " : ";*/
-
             for (int i = ind[u].first; i <= ind[u].second; i++)
             {
                 int son = krawedzie[i].second;
-                // cout << son << ' ';
                 if (son != 0)
                 {
                     stos.push(son);

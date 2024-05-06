@@ -1,3 +1,9 @@
+/*
+Katarzyna Trzos
+Alorytmy i struktury danych
+Pracownia C
+Monety
+*/
 #include <iostream>
 #include <stack>
 using namespace std;
@@ -19,7 +25,6 @@ void collect(int f, int c, int min_max)
         prev_ktora = curr_ktora;
         curr_ktora = czym[f][min_max];
 
-        // cout << prev_ktora << ' ' << curr_ktora <<' '<< ile << " f = " << f << '\n';
         if (curr_ktora == prev_ktora)
         {
             ile++;

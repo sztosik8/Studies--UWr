@@ -11,8 +11,8 @@ private:
     double *a;
 
 public:
-    wielom();
-    wielom(int st, double wsp);           // konstruktor jednomianu
+    //wielom();
+    wielom(int st=0, double wsp=1.0);           // konstruktor jednomianu
     wielom(int st, const double wsp[]);   // konstruktor wielomianu
     wielom(initializer_list<double> wsp); // lista współczynników
     wielom(const wielom &w);              // konstruktor kopiujący
@@ -32,7 +32,7 @@ public:
     friend wielom operator+(const wielom &u, const wielom &v);
     friend wielom operator-(const wielom &u, const wielom &v);
     friend wielom operator*(const wielom &u, const wielom &v);
-   // friend wielom operator * (double c);
+    friend wielom operator*(const wielom &u, double c);
 
     wielom &operator+=(const wielom &v);
     wielom &operator-=(const wielom &v);

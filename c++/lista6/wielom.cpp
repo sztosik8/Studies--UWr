@@ -4,11 +4,21 @@
 
 using namespace std;
 
-wielom::wielom()
+wielom::wielom(int st, double wsp)
 {
-    n = 0;
-    a = new double[n + 1];
-    a[0] = 1.0;
+    if (st < 0)
+    {
+        throw invalid_argument("Niepoprawny stopień wielomianu");
+    }
+    else
+    {
+        n = st;
+        a = new double[n + 1];
+        for (int i = 0; i <= n; ++i)
+        {
+            a[i] = wsp;
+        }
+    }
 }
 
 wielom::wielom(int st, const double wsp[])
@@ -20,8 +30,12 @@ wielom::wielom(int st, const double wsp[])
     else
     {
         n = st;
-        a = new double[n + 1];
-        *a = wsp[0];
+        this->a = new double[this->n+1];
+
+        for(int i=0; i<st; i++)
+        {
+            this->a[i] = a[i];
+        }
     }
 }
 
@@ -155,26 +169,27 @@ ostream &operator<<(std::ostream &wy, const wielom &w)
 wielom operator+(const wielom &u, const wielom &v)
 {
     int maxSt = max(u.n, v.n);
-    double *a = new double[maxSt + 1];
+    double a[maxSt + 1];
+
     for (int i = 0; i <= maxSt; ++i)
     {
+
         a[i] = (i <= u.n ? u[i] : 0) + (i <= v.n ? v[i] : 0);
+        cout << "dodaje " << u[i] << ' ' << v[i] << '=' << a[i] << '\n';
     }
     wielom result(maxSt, a);
-    delete[] a;
     return result;
 }
 
 wielom operator-(const wielom &u, const wielom &v)
 {
     int maxSt = max(u.n, v.n);
-    double *a = new double[maxSt + 1];
+    double a[maxSt + 1];
     for (int i = 0; i <= maxSt; ++i)
     {
         a[i] = (i <= u.n ? u[i] : 0) - (i <= v.n ? v[i] : 0);
     }
     wielom result(maxSt, a);
-    delete[] a;
     return result;
 }
 
@@ -193,17 +208,18 @@ wielom operator*(const wielom &u, const wielom &v)
     delete[] a;
     return result;
 }
-/*
-wielom operator*(double c)
+
+wielom operator*(const wielom &u, double c)
 {
-    wielom result(*this); // Tworzymy kopię obecnego wielomianu
-    for (int i = 0; i <= result.n; i++)
+    double *a = new double[u.n]();
+    for (int i = 0; i <= u.n; i++)
     {
-        result.a[i] *= c; // Mnożymy każdy współczynnik przez stałą c
+        a[i] = u[i] * c;
     }
+
+    wielom result(u.n, a);
     return result;
 }
-*/
 
 wielom &wielom::operator+=(const wielom &v)
 {

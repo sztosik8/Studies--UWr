@@ -1,3 +1,9 @@
+/*
+Katarzyna Trzos
+Alorytmy i struktury danych
+Pracownia B
+Monety
+*/
 #include <iostream>
 #include <cmath>
 #include <vector>
@@ -51,7 +57,6 @@ void kaz_z_kaz(int a, int b)
                 if (obecny_obw < min_obw)
                 {
                     min_obw = obecny_obw;
-                    // cout << "zmieniam odp na 1 : " << min_obw << '\n';
                     v_obw_min[0] = pointx[i];
                     v_obw_min[1] = pointx[j];
                     v_obw_min[2] = pointx[k];
@@ -59,14 +64,10 @@ void kaz_z_kaz(int a, int b)
             }
         }
     }
-    // cout << "------------------------------------------------" << '\n';
 }
 
 void minimalny(int a, int b)
 {
-    // cout << '\n';
-    // cout << "poczatek petli   a = " << a << "  b= " << b << '\n';
-
     if (b - a + 1 < 6)
     {
 
@@ -107,7 +108,7 @@ void minimalny(int a, int b)
                 break;
             }
         }
-        // cout << '\n';
+
 
         sort(pointy, pointy + ile);
         /*cout << "pointy dla prostej X =  " << X << "  i odleglosci d " << d << "z przedzialu (" << d + X << ',' << X - d << ')' << '\n';
@@ -147,7 +148,7 @@ void minimalny(int a, int b)
                                 cout << pointy[j].second << "  " << pointy[j].first << '\n';
                                 cout << pointy[k].second << "  " << pointy[k].first << '\n';*/
                                 min_obw = obecny_obw;
-                                // cout << "zmieniam odp na 2 : " << min_obw << '\n';
+                                
                                 v_obw_min[0] = make_pair(pointy[i].second, pointy[i].first);
                                 v_obw_min[1] = make_pair(pointy[j].second, pointy[j].first);
                                 v_obw_min[2] = make_pair(pointy[k].second, pointy[k].first);
