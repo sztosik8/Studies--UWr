@@ -7,6 +7,7 @@
         "iosfwd": "cpp",
         "initializer_list": "cpp",
         "new": "cpp",
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "*.h++": "cpp"
     }
 }

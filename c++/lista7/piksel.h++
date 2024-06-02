@@ -13,6 +13,8 @@ protected:
 public:
     piksel();
     piksel(int x, int y);
+    void set_x(int x);
+    void set_y(int y);
     int get_up();
     int get_down();
     int get_left();

@@ -7,9 +7,11 @@
 class pikselkolorowy : public piksel
 {
 protected:
-    kolor_transparentny clr;
+    kolor_transparentny clr; // color
 public:
     pikselkolorowy();
     pikselkolorowy(int x, int y, kolor_transparentny k);
     void move(int x, int y);
+    kolor_transparentny get_color();
+
 };

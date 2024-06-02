@@ -13,11 +13,9 @@ wielom::wielom(int st, double wsp)
     else
     {
         n = st;
-        a = new double[n + 1];
-        for (int i = 0; i <= n; ++i)
-        {
-            a[i] = wsp;
-        }
+        a = new double[n + 1]{};
+
+        a[n] = wsp;
     }
 }
 
@@ -30,11 +28,11 @@ wielom::wielom(int st, const double wsp[])
     else
     {
         n = st;
-        this->a = new double[this->n+1];
+        this->a = new double[this->n + 1];
 
-        for(int i=0; i<st; i++)
+        for (int i = 0; i < st; i++)
         {
-            this->a[i] = a[i];
+            this->a[i] = wsp[i];
         }
     }
 }
@@ -46,7 +44,7 @@ wielom::wielom(initializer_list<double> wsp)
     int i = 0;
     for (auto x : wsp)
     {
-        a[i] = x;
+        this->a[i] = x;
         i++;
     }
 }
@@ -103,7 +101,7 @@ int wielom::stopien() const
 
 double &wielom::operator[](int i)
 {
-    if (i < 0 || i > n)
+    if (i < 0 || i > this->n)
     {
         throw invalid_argument("brak wspolczynnika przy tej potedze");
     }
@@ -121,11 +119,6 @@ double wielom::operator[](int i) const
 
 double wielom::operator()(double x) const
 {
-    return calcValue(x);
-}
-
-double wielom::calcValue(double x) const
-{
     double result = a[n];
     for (int i = n - 1; i >= 0; --i)
     {
@@ -140,7 +133,7 @@ istream &operator>>(std::istream &st, wielom &w)
     st >> n;
     if (n < 0)
     {
-        throw std::invalid_argument("Invalid degree");
+        throw std::invalid_argument("bledny stopien wielomianu ");
     }
     double *a = new double[n + 1];
     for (int i = 0; i <= n; ++i)
@@ -168,28 +161,50 @@ ostream &operator<<(std::ostream &wy, const wielom &w)
 
 wielom operator+(const wielom &u, const wielom &v)
 {
+
     int maxSt = max(u.n, v.n);
+    wielom result = wielom(maxSt);
     double a[maxSt + 1];
-
-    for (int i = 0; i <= maxSt; ++i)
+    for (int i = 0; i <= maxSt; i++)
     {
-
-        a[i] = (i <= u.n ? u[i] : 0) + (i <= v.n ? v[i] : 0);
-        cout << "dodaje " << u[i] << ' ' << v[i] << '=' << a[i] << '\n';
+        if (i > u.n)
+        {
+            result.a[i] = v.a[i];
+        }
+        else if (i > v.n)
+        {
+            result.a[i] += u.a[i];
+        }
+        else
+        {
+            result.a[i] = u.a[i] + v.a[i];
+        }
     }
-    wielom result(maxSt, a);
+
     return result;
 }
 
 wielom operator-(const wielom &u, const wielom &v)
 {
     int maxSt = max(u.n, v.n);
+    wielom result(maxSt);
     double a[maxSt + 1];
     for (int i = 0; i <= maxSt; ++i)
     {
-        a[i] = (i <= u.n ? u[i] : 0) - (i <= v.n ? v[i] : 0);
+        if (i > u.n)
+        {
+            result.a[i] = v.a[i];
+        }
+        else if (i > v.n)
+        {
+            result.a[i] = u.a[i];
+        }
+        else
+        {
+            result.a[i] = u.a[i] + v.a[i];
+        }
     }
-    wielom result(maxSt, a);
+
     return result;
 }
 
@@ -232,6 +247,7 @@ wielom &wielom::operator-=(const wielom &v)
     *this = *this - v;
     return *this;
 }
+
 wielom &wielom::operator*=(double c)
 {
     for (int i = 0; i <= this->n; i++)

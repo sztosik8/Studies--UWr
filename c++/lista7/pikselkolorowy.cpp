@@ -12,9 +12,13 @@ pikselkolorowy::pikselkolorowy() : piksel::piksel()
 
 void pikselkolorowy::move(int a, int b)
 {
-    if (this->x + a > roz_x  or this->y + b > roz_y or this->x + a < 0 or this->y + b < 0)
+    if (this->x + a > roz_x or this->y + b > roz_y or this->x + a < 0 or this->y + b < 0)
         throw std::invalid_argument("Niepoprawny wektor");
 
     this->x += a;
     this->y += b;
+}
+kolor_transparentny pikselkolorowy::get_color()
+{
+    return clr;
 }

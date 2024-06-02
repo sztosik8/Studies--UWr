@@ -3,7 +3,7 @@
 #include <iostream>
 #include <stdexcept>
 
-class kolor_transparentny : virtual public kolor
+class kolor_transparentny : virtual private kolor
 {
 protected:
     int alfa;
@@ -11,4 +11,5 @@ protected:
 public:
     kolor_transparentny();
     kolor_transparentny(int r, int g, int b, int a);
+    int get_alfa();
 };

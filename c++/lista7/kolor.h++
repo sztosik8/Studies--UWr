@@ -20,7 +20,7 @@ public:
     void set_r(int r);
     void set_g(int g);
     void set_b(int b);
-    void darker(double x);
-    void lighter(double x);
+    void darken(double x);
+    void lighten(double x);
     static kolor mix(kolor k1, kolor k2);
 };

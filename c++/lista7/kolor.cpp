@@ -32,7 +32,7 @@ void kolor::set_g(int g) { this->green = g; }
 
 void kolor::set_b(int b) { this->blue = b; }
 
-void kolor::lighter(double x)
+void kolor::lighten(double x)
 {
     if (x > 1 or x < 0)
         throw std::invalid_argument("X jest spoza zakresu");
@@ -44,7 +44,7 @@ void kolor::lighter(double x)
     blue = b * x;
 }
 
-void kolor::darker(double x)
+void kolor::darken(double x)
 {
     if (x > 1 or x < 0)
         throw std::invalid_argument("X jest spoza zakresu");

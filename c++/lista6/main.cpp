@@ -53,7 +53,6 @@ int main()
     cout << "wielomin2 " << wielomian2 << '\n';
     wielom wielomian3 = wielomian1 + wielomian2;
 
-    
     cout << "Wynik dodawania: " << wielomian3 << endl
          << '\n'
          << '\n';
@@ -62,8 +61,8 @@ int main()
     cout << "wielomin2 " << wielomian2 << '\n';
 
     // cout << "wielomian1 " << wielomian1 <<wielomian2<< '\n';
-/*
- wielomian3 = wielomian1 - wielomian2;
+
+    wielomian3 = wielomian1 - wielomian2;
 
     cout << "Wynik odejmowania: " << '\n';
 
@@ -94,19 +93,14 @@ int main()
         cerr << ex.what() << '\n';
     }
 
-    wielom w=wielom();
-    cout<<w<<'\n';
+    wielom w = wielom();
+    cout << w << '\n';
 
-    
-
-        try
-        {
-        }
-        catch (invalid_argument const &ex)
-        {
-            cerr << ex.what() << '\n';
-        }
-
-
-        */
+    try
+    {
+    }
+    catch (invalid_argument const &ex)
+    {
+        cerr << ex.what() << '\n';
+    }
 }

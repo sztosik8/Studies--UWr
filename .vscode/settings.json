@@ -1,6 +1,13 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "new": "cpp",
+        "stdexcept": "cpp",
+        "memory_resource": "cpp",
+        "filesystem": "cpp",
+        "string": "cpp",
+        "variant": "cpp",
+        "__functional_03": "cpp"
     }
 }

@@ -9,3 +9,7 @@ kolor_transparentny::kolor_transparentny(int r, int g, int b, int a) : kolor::ko
 {
     this->alfa = a;
 }
+int kolor_transparentny::get_alfa()
+{
+    return alfa;
+}

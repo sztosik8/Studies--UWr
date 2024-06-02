@@ -15,6 +15,19 @@ piksel::piksel(int x, int y)
     this->y = y;
 }
 
+void piksel::set_x(int xx)
+{
+    if(x<0 || x>roz_x)
+    throw std::invalid_argument("Niepoprawne dane");
+    this->x = xx;
+}
+void piksel::set_y(int yy)
+{
+    if(y<0 || y>roz_y)
+    throw std::invalid_argument("Niepoprawne dane");
+    this->y = yy;
+}
+
 int piksel::get_up() { return roz_y - y; }
 
 int piksel::get_down() { return y; }

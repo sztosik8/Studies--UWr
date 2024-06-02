@@ -55,16 +55,16 @@ int main()
     cout << "green k1:" << k1.get_g() << '\n';
     cout << "blue k1:" << k1.get_b() << '\n';
 
-    k1.darker(0.3);
+    k1.darken(0.3);
     cout << "red k1:" << k1.get_r() << '\n';
     cout << "green k1:" << k1.get_g() << '\n';
     cout << "blue k1:" << k1.get_b() << '\n';
-    
+
     try
     {
-        k1.lighter(0.7);
+        k1.lighten(0.7);
     }
-    catch(invalid_argument const &ex)
+    catch (invalid_argument const &ex)
     {
         cerr << ex.what() << '\n';
     }

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <stdexcept>
 
-class kolornt : kolor_nazwany, kolor_transparentny
+class kolornt : public kolor_nazwany, public kolor_transparentny
 {
 public:
     kolornt();
