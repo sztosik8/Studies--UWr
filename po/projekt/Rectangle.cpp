@@ -1,7 +1,7 @@
 #include "classes.hpp"
 #include "functions.hpp"
 
-Rectangle::Rectangle() : A(0, 0), B(1, 0), C(0, 1), D(1, 1) {}
+Rectangle::Rectangle() : A(0, 0), B(1, 0), C(1, 1), D(0, 1) {}
 
 Rectangle::Rectangle(const Rectangle &t) : A(t.A), B(t.B), C(t.C), D(t.D) {}
 
@@ -12,12 +12,10 @@ Rectangle::Rectangle(const Point &a, const Point &b, const Point &c, const Point
         double len1 = length_g(a, b);
         double len2 = length_g(b, c);
         double len3 = length_g(c, d);
-        Segment AB = Segment(a, b);
-        Segment BC = Segment(b, c);
-        Segment CD = Segment(c, d);
-        Segment DA = Segment(d, a);
+        Segment AB(a, b), BC(b, c), CD(c, d), DA(d, a);
 
-        bool cond =AB.is_parallel(CD) && BC.is_parallel(DA) && AB.is_perpendicular(BC);
+        bool cond = AB.is_parallel(CD) && BC.is_parallel(DA) && AB.is_perpendicular(BC);
+
         if (cond)
         {
             A = a;
@@ -27,7 +25,7 @@ Rectangle::Rectangle(const Point &a, const Point &b, const Point &c, const Point
         }
         else
         {
-            throw invalid_argument("Nie można utworzyć prostokata z takich punktów");
+            throw invalid_argument("Nie można utworzyć prostokata z takich punktów (Rectangle(Point, Point, Point, Point))");
         }
     }
     catch (const exception &e)
@@ -36,9 +34,32 @@ Rectangle::Rectangle(const Point &a, const Point &b, const Point &c, const Point
     }
 }
 
-void Rectangle::set_rectangle(const Point &pa, const Point &pb, const Point &pc, const Point &pd)
+void Rectangle::set_rectangle(const Point &a, const Point &b, const Point &c, const Point &d)
 {
-    Rectangle(pa, pb, pc, pd);
+    try
+    {
+        double len1 = length_g(a, b);
+        double len2 = length_g(b, c);
+        double len3 = length_g(c, d);
+        Segment AB(a, b), BC(b, c), CD(c, d), DA(d, a);
+
+        bool cond = AB.is_parallel(CD) && BC.is_parallel(DA) && AB.is_perpendicular(BC);
+        if (cond)
+        {
+            A = a;
+            B = b;
+            C = c;
+            D = d;
+        }
+        else
+        {
+            throw invalid_argument("Nie można utworzyć prostokata z takich punktów (set_rectangle())");
+        }
+    }
+    catch (const exception &e)
+    {
+        cerr << e.what() << '\n';
+    }
 }
 
 Point Rectangle::getA() const
@@ -76,7 +97,7 @@ void Rectangle::symmetry(const Line &s)
 
 double Rectangle::perimeter() const
 {
-    double p = 2 * (length_g(A, B) * length_g(B, C));
+    double p = 2 * (length_g(A, B) + length_g(B, C));
     return p;
 }
 double Rectangle::area() const
@@ -88,18 +109,18 @@ bool Rectangle::inside(const Point &e)
 {
     double p = area();
     double p1 = area_g(A, B, e);
-    double p2 = area_g(A, C, e);
-    double p3 = area_g(B, C, e);
-    double p4 = area_g(C, D, e);
+    double p2 = area_g(B, C, e);
+    double p3 = area_g(C, D, e);
+    double p4 = area_g(D, A, e);
 
-    return (p == p1 + p2 + p3 + p4);
+    return abs(p - (p1 + p2 + p3 + p4)) < 1e-5;
 }
 bool Rectangle::is_square() const
 {
     double len1 = length_g(A, B);
     double len2 = length_g(B, C);
     double len3 = length_g(C, D);
-    return (len1 == len2) && (len2 == len3);
+    return abs(len1 - len2) < 1e-5 && abs(len2 - len3) < 1e-5;
 }
 
 bool operator==(const Rectangle &r1, const Rectangle &r2)

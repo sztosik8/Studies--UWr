@@ -7,14 +7,11 @@ using namespace std;
 class Vector;
 class Point;
 class Segment;
-
-class Line;
-class Parable;
-
 class Triangle;
 class Square;
 class Rectangle;
 class Circle;
+class Line;
 
 
 class Vector
@@ -47,7 +44,7 @@ public:
 
     Vector &operator+=(const Vector &v);
     Vector &operator-=(const Vector &v);
-    Vector operator*=(double c);
+    Vector &operator*=(double c);
 
 };
 
@@ -102,7 +99,6 @@ public:
     friend bool operator!=(const Segment &AB, const Segment &CD); 
 
 };
-
 
 class Triangle
 {
@@ -218,7 +214,6 @@ public:
     double area() const ;
     bool belong(const Point &A);
     bool is_inside(const Point &A);   
-    bool on(const Point &A);
     bool is_intersect(const Circle &S); // przecinajace
     bool is_separable(const Circle &S);
     bool is_tangent(const Circle &S);
@@ -249,7 +244,6 @@ public:
     double getb() const;
 
     void translate(const Vector &v);
-    void symmetry(const Line &k);
     double value_at(double x);
     double zero_of_fun(double x);
     bool belong(const Point &x);

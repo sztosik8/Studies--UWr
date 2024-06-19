@@ -43,10 +43,10 @@ void Point::symmetry(const Line &k)
 
 bool operator==(const Point &A, const Point &B)
 {
-    return A.getx() == B.getx() && A.gety() == B.gety();
+    return abs(A.getx() - B.getx()) < 1e-5 && abs(A.gety() - B.gety()) < 1e-5;
 }
 
 bool operator!=(const Point &A, const Point &B)
 {
-    return A.getx() != B.getx() || A.gety() != B.gety();
+    return abs(A.getx() - B.getx()) > 1e-5 || abs(A.gety() - B.gety()) > 1e-5;
 }

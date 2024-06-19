@@ -1,9 +1,11 @@
 #include "functions.hpp"
+#include <cmath>
 
 double length_g(Point a, Point b)
 {
-    double x = a.getx() - b.getx();
-    double y = a.gety() - b.gety();
+    double x = double(a.getx() - b.getx());
+    double y = double(a.gety() - b.gety());
+  
     return sqrt(x * x + y * y);
 }
 

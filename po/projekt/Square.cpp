@@ -9,12 +9,12 @@ Square::Square(const Point &a, const Point &b, const Point &c, const Point &d)
 {
     try
     {
-        double len1 = length_g(A, B);
-        double len2 = length_g(B, C);
-        double len3 = length_g(C, D);
-        Segment AC, BD;
-        AC.set_segment(A, C);
-        BD.set_segment(B, D);
+        double len1 = length_g(a, b);
+        double len2 = length_g(b, c);
+        double len3 = length_g(c, d);
+
+        Segment AC(a, c), BD(b, d);
+
         bool cond = (len1 == len2) && (len2 == len3) && AC.is_perpendicular(BD);
         if (cond)
         {
@@ -25,7 +25,7 @@ Square::Square(const Point &a, const Point &b, const Point &c, const Point &d)
         }
         else
         {
-            throw invalid_argument("Nie można utworzyć kwadratu z takich punktów");
+            throw invalid_argument("Cannot form a square with these points (Square(Point, Point, Point, Point))");
         }
     }
     catch (const exception &e)
@@ -34,9 +34,33 @@ Square::Square(const Point &a, const Point &b, const Point &c, const Point &d)
     }
 }
 
-void Square::set_square(const Point &pa, const Point &pb, const Point &pc, const Point &pd)
+void Square::set_square(const Point &a, const Point &b, const Point &c, const Point &d)
 {
-    Square(pa, pb, pc, pd);
+    try
+    {
+        double len1 = length_g(a, b);
+        double len2 = length_g(b, c);
+        double len3 = length_g(c, d);
+
+        Segment AC(a, c), BD(b, d);
+
+        bool cond = (len1 == len2) && (len2 == len3) && AC.is_perpendicular(BD);
+        if (cond)
+        {
+            A = a;
+            B = b;
+            C = c;
+            D = d;
+        }
+        else
+        {
+            throw invalid_argument("Cannot form a square with these points (set_square())");
+        }
+    }
+    catch (const exception &e)
+    {
+        cerr << e.what() << '\n';
+    }
 }
 
 Point Square::getA() const
@@ -86,11 +110,11 @@ bool Square::inside(const Point &e)
 {
     double p = area();
     double p1 = area_g(A, B, e);
-    double p2 = area_g(A, C, e);
-    double p3 = area_g(B, C, e);
-    double p4 = area_g(C, D, e);
+    double p2 = area_g(B, C, e);
+    double p3 = area_g(C, D, e);
+    double p4 = area_g(D, A, e);
 
-    return (p == p1 + p2 + p3 + p4);
+    return abs(p - (p1 + p2 + p3 + p4)) < 1e-5;
 }
 
 bool operator==(const Square &s1, const Square &s2)

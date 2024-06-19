@@ -1,5 +1,6 @@
 #include "classes.hpp"
 #include "functions.hpp"
+#include <cmath>
 
 Vector::Vector() : x(0), y(0) {}
 
@@ -7,17 +8,14 @@ Vector::Vector(const Vector &v) : x(v.x), y(v.y) {}
 
 Vector::Vector(double dx, double dy) : x(dx), y(dy) {}
 
-Vector::Vector(const Point &A, const Point &B) : x(B.getx()-A.getx()), y(B.gety()-A.gety()) {}
+Vector::Vector(const Point &A, const Point &B) : x(B.getx() - A.getx()), y(B.gety() - A.gety()) {}
 
-Vector::Vector(const Segment &AB)
-{
-    Vector(AB.getA(), AB.getB());
-}
+Vector::Vector(const Segment &AB) : Vector(AB.getA(), AB.getB()) {}
 
-void Vector:: set_vector(double dx, double dy)
+void Vector::set_vector(double dx, double dy)
 {
-    x=dx;
-     y=dy;
+    x = dx;
+    y = dy;
 }
 
 double Vector::getx() const
@@ -37,12 +35,12 @@ double Vector::length() const
 
 bool operator==(const Vector &v, const Vector &u)
 {
-    return (v.getx()==u.getx()) && (v.gety()==u.gety());
+    return abs(v.getx() - u.getx()) < 1e-5 && abs(v.gety() - u.gety()) < 1e-5;
 }
 
 bool operator!=(const Vector &v, const Vector &u)
 {
-    return (v.getx()!=u.getx()) || (v.gety()!=u.gety());
+    return abs(v.getx() - u.getx()) > 1e-5 || abs(v.gety() - u.gety()) > 1e-5;
 }
 
 Vector operator+(const Vector &v, const Vector &u)
@@ -85,7 +83,8 @@ Vector &Vector::operator-=(const Vector &v)
     return *this;
 }
 
-Vector Vector::operator*=(double c)
+Vector &Vector::operator*=(double c)
 {
-    return *this * c;
+    *this = *this * c;
+    return *this;
 }

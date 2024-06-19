@@ -2,25 +2,30 @@
 #include "functions.hpp"
 #include <cmath>
 
-Circle::Circle() : O(0, 0), r(1){}
+Circle::Circle() : O(0, 0), r(1) {}
 
 Circle::Circle(const Circle &c) : O(c.O), r(c.r) {}
 
 Circle::Circle(const Point &dS, double dr)
 {
-    if (dr > 0) {
-    O = dS;
-    r = dr;
-} 
-else 
-    cerr << "Nie można utworzyć trójkąta z takich punktów"<<'\n';
-
+    if (dr > 0)
+    {
+        O = dS;
+        r = dr;
+    }
+    else
+        cerr << "Cannot form a circle with these points (Ciecle())" << '\n';
 }
-
 
 void Circle::set_circle(const Point &ds, double dr)
 {
-    Circle(ds,dr);
+    if (dr > 0)
+    {
+        O = ds;
+        r = dr;
+    }
+    else
+        cerr << "Cannot form a circle with these points (set_circle())" << '\n';
 }
 
 Point Circle::getO() const
@@ -28,7 +33,7 @@ Point Circle::getO() const
     return O;
 }
 
-double Circle::getr() 
+double Circle::getr()
 {
     return r;
 }
@@ -62,17 +67,12 @@ bool Circle::is_inside(const Point &A)
     return length_g(A, O) <= r;
 }
 
-bool Circle::on(const Point &A)
+bool Circle::is_tangent(const Circle &c)
 {
-    return length_g(A, O) == r;
+    return abs(length_g(O, c.O) - (c.r + r)) < 1e-5;
 }
 
-bool Circle::is_tangent(const Circle &c) // styczne
-{
-    return length_g(O, c.O) == c.r + r;
-}
-
-bool Circle::is_intersect(const Circle &c) // przecinajace
+bool Circle::is_intersect(const Circle &c)
 {
     return length_g(O, c.O) < c.r + r;
 }
@@ -82,31 +82,33 @@ bool Circle::is_separable(const Circle &c)
     return length_g(O, c.O) > c.r + r;
 }
 
-Line Circle::tangent_line(const Point &A) 
+Line Circle::tangent_line(const Point &A)
 {
     try
     {
-        if(belong(A))
+        if (belong(A))
         {
             Line k(O, A);
-            
             return k.perpendicular_at(A);
         }
         else
-            throw invalid_argument("Nie można utworzyć trójkata z takich punktów");
+        {
+            return Line();
+            throw invalid_argument("Point A does not belong to the circle (tangent_line())");
+        }
     }
-    catch(const exception& e)
+    catch (const exception &e)
     {
         cerr << e.what() << '\n';
     }
 }
 
-bool operator==(const Circle  &c1, const Circle  &c2)
+bool operator==(const Circle &c1, const Circle &c2)
 {
-    return c1.O == c2.O && c1.r == c2.r;
+    return c1.O == c2.O && abs(c1.r - c2.r) < 1e-5;
 }
 
-bool operator!=(const Circle  &c1, const Circle  &c2)
+bool operator!=(const Circle &c1, const Circle &c2)
 {
-    return c1.O != c2.O || c1.r != c2.r;
+    return c1.O != c2.O || abs(c1.r - c2.r) > 1e-5;
 }

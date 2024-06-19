@@ -10,9 +10,10 @@ Triangle::Triangle(Point a, Point b, Point c)
     try
     {
         double area = area_g(a, b, c);
+
         if (area == 0)
         {
-            throw invalid_argument("Nie można utworzyć trójkąta z takich punktów");
+            throw invalid_argument("Cannot form a triangle with these points ( Triangle(Point, Point, Point))");
         }
         else
         {
@@ -29,7 +30,25 @@ Triangle::Triangle(Point a, Point b, Point c)
 
 void Triangle::set_triangle(Point a, Point b, Point c)
 {
-    Triangle(a, b, c);
+    try
+    {
+        double new_area = area_g(a, b, c);
+        if (new_area == 0)
+        {
+
+            throw invalid_argument("Cannot form a triangle with these points (set_triangle())");
+        }
+        else
+        {
+            A = a;
+            B = b;
+            C = c;
+        }
+    }
+    catch (const exception &e)
+    {
+        cerr << e.what() << '\n';
+    }
 }
 
 Point Triangle::getA() const
@@ -131,7 +150,6 @@ bool Triangle::isObtuseAngled() const
 Circle Triangle::Incircle() const
 {
     Segment AB(A, B);
-
     Segment BC(B, C);
     Segment CA(C, A);
 
@@ -142,7 +160,7 @@ Circle Triangle::Incircle() const
     double perimeter = AB_len + BC_len + CA_len;
     double area = this->area();
 
-    double inradius = area / (perimeter / 2);
+    double inradius = abs(area / (perimeter / 2));
 
     double x = (A.getx() * BC_len + B.getx() * CA_len + C.getx() * AB_len) / perimeter;
     double y = (A.gety() * BC_len + B.gety() * CA_len + C.gety() * AB_len) / perimeter;
@@ -167,8 +185,7 @@ Circle Triangle::Circumcircle() const
 
     Point circumcenter(Ux, Uy);
     Segment AB(A, B);
-    double circumradius = AB.length() / (2 * sin(atan2(B.gety() - A.gety(), B.getx() - A.getx())));
-
+    double circumradius = abs(AB.length() / (2.0 * sin(atan2(B.gety() - A.gety(), B.getx() - A.getx()))));
     Circle circumcircle(circumcenter, circumradius);
     return circumcircle;
 }

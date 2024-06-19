@@ -8,6 +8,7 @@
         "filesystem": "cpp",
         "string": "cpp",
         "variant": "cpp",
-        "__functional_03": "cpp"
+        "__functional_03": "cpp",
+        "algorithm": "cpp"
     }
 }

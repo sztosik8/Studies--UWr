@@ -10,11 +10,12 @@ Line::Line(const Point &A, const Point &B)
     {
         a = (B.gety() - A.gety()) / (B.getx() - A.getx());
         b = A.gety() - a * A.getx();
+
     }
     else
     {
-        cerr << "Punkty A i B nie mogą być identyczne." << '\n';
-        exit(1); 
+        cerr << "Points A and B cannot be identical." << '\n';
+        exit(1);
     }
 }
 
@@ -22,7 +23,7 @@ Line::Line(double da, double db)
 {
     if (da == db && db == 0)
     {
-        cerr << "Współczynniki a i b nie mogą być jednocześnie równe 0." << '\n';
+        cerr << "Coefficients a and b cannot both be zero." << '\n';
         exit(1);
     }
     else
@@ -34,17 +35,50 @@ Line::Line(double da, double db)
 
 Line::Line(const Vector &v)
 {
-    Line(Point(0, 0), Point(v.getx(), v.gety()));
+    Point A(0, 0);
+    Point B(v.getx(), v.gety());
+     if (A != B)
+    {
+        a = (B.gety() - A.gety()) / (B.getx() - A.getx());
+        b = A.gety() - a * A.getx();
+
+    }
+    else
+    {
+        cerr << "Vector can not be zero" << '\n';
+        exit(1);
+    }
 }
 
 Line::Line(const Segment &AB)
 {
-    Line(AB.getA(), AB.getB());
+    Point A=AB.getA();
+    Point B=AB.getB();
+     if (A != B)
+    {
+        a = (B.gety() - A.gety()) / (B.getx() - A.getx());
+        b = A.gety() - a * A.getx();
+
+    }
+    else
+    {
+        cerr << "Punkty A i B nie mogą być identyczne." << '\n';
+        exit(1);
+    }
 }
 
 void Line::set_Line(double da, double db)
 {
-    Line(da, db);
+    if (da == db && db == 0)
+    {
+        cerr << "Współczynniki a i b nie mogą być jednocześnie równe 0." << '\n';
+        exit(1);
+    }
+    else
+    {
+        a = da;
+        b = db;
+    }
 }
 
 double Line::geta() const
@@ -72,7 +106,7 @@ bool Line::belong(const Point &A)
 
 void Line::translate(const Vector &v)
 {
-    double new_b = b + (a * v.getx()) - v.gety();
+    double new_b = b - (a * v.getx()) + v.gety();
     b = new_b;
 }
 
@@ -105,10 +139,10 @@ Line Line::perpendicular_at(const Point &A)
 
 bool operator==(const Line &k, const Line &l)
 {
-    return k.a == l.a && k.b == l.b;
+    return abs(k.a - l.a) < 1e-5 && abs(k.b - l.b) < 1e-5;
 }
 
 bool operator!=(const Line &k, const Line &l)
 {
-    return k.a != l.a || k.b != l.b;
+    return abs(k.a - l.a) > 1e-5 || abs(k.b - l.b) > 1e-5;
 }

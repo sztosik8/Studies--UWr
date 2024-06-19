@@ -12,7 +12,7 @@ Segment::Segment(const Point &a, const Point &b)
         double len = length_g(a, b);
         if (len == 0)
         {
-            throw invalid_argument("Nie można utworzyć odcinka z takich punktów");
+            throw invalid_argument("Cannot create a segment with these points (Segment(Point,Point))");
         }
         else
         {
@@ -25,14 +25,12 @@ Segment::Segment(const Point &a, const Point &b)
         std::cerr << e.what() << '\n';
     }
 }
-Segment::Segment(const Vector &v)
-{
-    Segment(Point(0, 0), Point(v.getx(), v.gety()));
-}
+Segment::Segment(const Vector &v) : Segment(Point(0, 0), Point(v.getx(), v.gety())) {}
 
 void Segment::set_segment(const Point &a, const Point &b)
 {
-    Segment(a, b);
+    A = a;
+    B = b;
 }
 
 Point Segment::getA() const
@@ -62,17 +60,30 @@ double Segment::length() const
 
 bool Segment::is_parallel(const Segment &AB)
 {
-    double a1 = (A.gety() - B.gety()) / (A.getx() - B.getx());
-    double a2 = (AB.getA().gety() - AB.getB().gety()) / (AB.getA().getx() - AB.getB().getx());
+    if ((B.getx() - A.getx() == 0) && (AB.getB().getx() - AB.getA().getx() == 0))
+        return true;
 
-    return (a1 == a2);
+    if ((B.getx() - A.getx() == 0) || (AB.getB().getx() - AB.getA().getx() == 0))
+        return false;
+
+    double a1 = double(B.gety() - A.gety()) / (B.getx() - A.getx());
+    double a2 = double(AB.getB().gety() - AB.getA().gety()) / (AB.getB().getx() - AB.getA().getx());
+    return abs(a1 - a2) < 1e-5;
 }
+
 bool Segment::is_perpendicular(const Segment &AB)
 {
-    double a1 = (A.gety() - B.gety()) / (A.getx() - B.getx());
-    double a2 = (AB.getA().gety() - AB.getB().gety()) / (AB.getA().getx() - AB.getB().getx());
 
-    return a1 * a2 == (-1);
+    if ((A.getx() == B.getx()) && (AB.getA().getx() == AB.getB().getx()))
+        return false;
+
+    if (A.getx() == B.getx() || AB.getA().getx() == AB.getB().getx())
+        return true;
+
+    double a1 = double(A.gety() - B.gety()) / (A.getx() - B.getx());
+    double a2 = double(AB.getA().gety() - AB.getB().gety()) / (AB.getA().getx() - AB.getB().getx());
+
+    return abs((a1 * a2) + 1) < 1e-5;
 }
 
 bool Segment::belong(const Point &p)
@@ -117,9 +128,9 @@ bool Segment::intersect(const Segment &AB)
 
 bool operator==(const Segment &AB, const Segment &CD)
 {
-    return (AB.A==CD.A) && (AB.B == CD.B);
+    return (AB.A == CD.A) && (AB.B == CD.B);
 }
 bool operator!=(const Segment &AB, const Segment &CD)
 {
-    return (AB.A!=CD.A) || (AB.B != CD.B);
+    return (AB.A != CD.A) || (AB.B != CD.B);
 }
